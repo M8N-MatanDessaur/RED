@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;800&display=swap');
+
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    position: relative;
+
+    background-color: #851909;
+    color: #ffffff;
+
+    font-family: 'Poppins', sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing : antialiased;
+
+    overflow: hidden;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=179988),default;
+
+    /* NOT SELECTABLE */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h1{
+    font-size: 10vw;
+    margin: 0 20px;
+    line-height: 1.4;
+    font-weight: 800;
+}
+
+h2{
+    position: fixed;
+    bottom: 0;
+    font-size: 24px;
+    margin: 0 20px 20px;
+    font-weight: normal;
+}
+
+figcaption{
+    font-size: 36px;
+    font-weight: normal;
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+    bottom: 0;
+    color: white;
+    margin: 0 auto;
+    width: 50%;
+}
+
+section{
+    display: flex;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+figure{
+    background-color: #FFF;
+    margin: 0;
+    position: relative;
+    width: 50vw;
+}
+
+img{
+    height: 100vh;
+    position: fixed;
+    object-fit: cover;
+    width: 50%;
+    opacity: 0;
+}
+
+figure:active{
+    mix-blend-mode: luminosity;
+}
+
+aside{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    background-color: #FFF;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-bar{
+    display: grid;
+    grid-row-gap: 12px ;
+}
+
+progress{
+    border: #294910 1px solid;
+    height: 20px;
+    width: 400px;
+}
+
+progress[value]::-webkit-progress-bar{
+    background-color: #FFF;
+}
+
+progress[value]::-webkit-progress-value{
+    background-color: #294910;
+}
+
+a{
+    color: #FFF;
+    text-decoration: none;
+    margin: 3px 3px;
+    float: right;
+    cursor: url(http://www.rw-designer.com/cursor-extern.php?id=173023),pointer;
+}
+
+.display{
+opacity: 1;
+}
+
+.hide{
+opacity: 0;
+}
+
+@media (max-width:800px) {
+    section{
+        flex-direction: column;
+    }
+
+    figure{
+        flex-grow: 1;
+        width: 100vw;
+    }
+
+    figcaption{
+        font-size: 30px;
+        width: 100%;
+    }
+
+    h1{
+        font-size: 80px;
+    }
+
+    h2{
+        font-size: 20px;
+        position: relative;
+    }
+
+    img{
+        width: 100%;
+    }
+}

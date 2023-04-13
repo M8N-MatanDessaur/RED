@@ -1,24 +1,60 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useState } from 'react';
 import './App.css';
+import './style.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import red1 from './assets/red01.jpg';
+import red2 from './assets/red02.jpg';
+import red3 from './assets/red03.jpg';
+import red4 from './assets/red04.jpg';
+
+const Loading = ({calculatedWidth}) => (
+  <aside>
+    <div className='loading-bar'>
+      <label htmlFor="images-loaded">Loading all your images</label>
+      <progress id='images-loaded' max="100" value={calculatedWidth}></progress>
     </div>
+  </aside>
+)
+
+const images = [red1,red2,red3,red4];
+
+const App = () => {
+
+  const [currentImage, setCurrentImage] = useState(0);
+  const [numLoaded, setNumLoaded] = useState(0);
+
+  const handleClick = () =>{
+    setCurrentImage((currentImage)=>{
+      return currentImage < images.length - 1 ? currentImage + 1 : 0
+    })
+  }
+
+  const handleImageLoad = () => {
+    setNumLoaded((numLoaded) =>  numLoaded + 1)
+  }
+
+  return (
+    <section>
+      <header>
+        <h1>RED</h1>
+        <h2>A photography project <br/> by James.r_a
+        <span><a href="https://www.instagram.com/james.r_a/"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2c-2.714 0-3.055.013-4.121.06-1.066.05-1.793.217-2.429.465a4.896 4.896 0 0 0-1.771 1.154A4.909 4.909 0 0 0 2.525 5.45c-.248.635-.416 1.362-.465 2.425C2.013 8.944 2 9.284 2 12.001c0 2.715.013 3.055.06 4.121.05 1.066.217 1.792.465 2.428a4.91 4.91 0 0 0 1.154 1.771 4.88 4.88 0 0 0 1.77 1.154c.637.247 1.362.416 2.427.465 1.068.047 1.408.06 4.124.06 2.716 0 3.055-.012 4.122-.06 1.064-.05 1.793-.218 2.43-.465a4.893 4.893 0 0 0 1.77-1.154 4.91 4.91 0 0 0 1.153-1.771c.246-.636.415-1.363.465-2.428.047-1.066.06-1.406.06-4.122s-.012-3.056-.06-4.124c-.05-1.064-.219-1.791-.465-2.426a4.907 4.907 0 0 0-1.154-1.771 4.888 4.888 0 0 0-1.771-1.154c-.637-.248-1.365-.416-2.429-.465-1.067-.047-1.406-.06-4.123-.06H12Zm-.896 1.803H12c2.67 0 2.987.008 4.04.057.975.044 1.505.208 1.858.344.466.181.8.399 1.15.748.35.35.566.683.747 1.15.138.352.3.882.344 1.857.049 1.053.059 1.37.059 4.039 0 2.668-.01 2.986-.059 4.04-.044.974-.207 1.503-.344 1.856a3.09 3.09 0 0 1-.748 1.149 3.09 3.09 0 0 1-1.15.747c-.35.137-.88.3-1.857.345-1.053.047-1.37.059-4.04.059s-2.987-.011-4.041-.059c-.975-.045-1.504-.208-1.856-.345a3.097 3.097 0 0 1-1.15-.747 3.1 3.1 0 0 1-.75-1.15c-.136-.352-.3-.882-.344-1.857-.047-1.054-.057-1.37-.057-4.041 0-2.67.01-2.985.057-4.039.045-.975.208-1.505.345-1.857.181-.466.399-.8.749-1.15a3.09 3.09 0 0 1 1.15-.748c.352-.137.881-.3 1.856-.345.923-.042 1.28-.055 3.144-.056v.003Zm6.235 1.66a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4ZM12 6.865a5.136 5.136 0 1 0-.16 10.272A5.136 5.136 0 0 0 12 6.865Zm0 1.801a3.334 3.334 0 1 1 0 6.668 3.334 3.334 0 0 1 0-6.668Z"></path>
+</svg></a><a href="https://jamesr-a.com/"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12.795 6.375a.625.625 0 0 0-.625-.625H3.875A1.875 1.875 0 0 0 2 7.625v12.5A1.875 1.875 0 0 0 3.875 22h12.5a1.875 1.875 0 0 0 1.875-1.875V11.83a.624.624 0 1 0-1.25 0v8.295a.624.624 0 0 1-.625.625h-12.5a.625.625 0 0 1-.625-.625v-12.5A.625.625 0 0 1 3.875 7h8.295a.625.625 0 0 0 .625-.625Z" clip-rule="evenodd"></path>
+  <path fill-rule="evenodd" d="M22 2.625A.625.625 0 0 0 21.375 2h-6.25a.625.625 0 1 0 0 1.25h4.741L9.682 13.432a.626.626 0 1 0 .885.886L20.75 4.134v4.741a.625.625 0 1 0 1.25 0v-6.25Z" clip-rule="evenodd"></path>
+</svg></a></span></h2>
+      </header>
+      <figure>
+        {numLoaded < images.length ?  <Loading calculatedWidth={(numLoaded/images.length)*100}/> : null}
+       
+        {images.map((imgURL, index)=>(
+        <img src={imgURL} onClick={handleClick} onLoad={handleImageLoad} alt="img" key={imgURL} className={currentImage === index ? 'display': 'hide'}/>
+        ))}
+        <figcaption>{currentImage+1} / {images.length}</figcaption>
+      </figure>
+    </section>
   );
 }
 
